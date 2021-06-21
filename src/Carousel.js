@@ -6,7 +6,7 @@ import image3 from "./image3.jpg";
 import Card from "./Card";
 
 function Carousel(props) {
-  const [cardIdx, setCardIdx] = useState(0);
+  const [cardIdx, setCardIdx] = useState(props.startIdx);
   const card = props.cardData[cardIdx];
   const total = props.cardData.length;
   const goForward = () => setCardIdx(cardIdx + 1);
@@ -38,6 +38,7 @@ function Carousel(props) {
 }
 
 Carousel.defaultProps = {
+  startIdx: 0,
   cardData: [
     {
       src: image1,
@@ -52,7 +53,7 @@ Carousel.defaultProps = {
       caption: "Photo by Josh Post on Unsplash"
     }
   ],
-  title: "Shells from far away beaches."
+  title: "Shells from far away beaches."  
 };
 
 export default Carousel;

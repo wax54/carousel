@@ -54,3 +54,24 @@ it("works when left arrow clicked", function() {
   expect(queryByAltText("Photo by Pratik Patel on Unsplash")).not.toBeInTheDocument();
 
 });
+
+it("should not have the left arrow on the first image", function () {
+  const { queryByTestId } = render(<Carousel startIdx={0} />);
+
+  const leftArrow = queryByTestId("left-arrow");
+  expect(leftArrow).not.toBeInTheDocument();
+
+});
+
+it("should not have the right arrow on the last image", function () {
+  const { queryByTestId } = render(<Carousel cardData={[
+    {
+      src: "bogusURL",
+      caption: "ONE BOGUS IMAGE"
+    }]} />);
+
+  const rightArrow = queryByTestId("right-arrow");
+  expect(rightArrow).not.toBeInTheDocument();
+
+});
+
